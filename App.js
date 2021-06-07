@@ -5,7 +5,7 @@ import QRCode from 'react-native-qrcode-svg';
 const App = () => {
     const [text, setText] = useState('');
     return (
-        <ScrollView style={{paddingTop: 40}}>
+        <ScrollView style={{paddingTop: 40, paddingLeft:10, paddingRight: 10}}>
             <TextInput
                 style={{height: 40,
                     borderColor: 'gray',
