@@ -10,6 +10,7 @@ const App = () => {
                 style={{height: 40,
                     borderColor: 'gray',
                     borderWidth: 1}}
+                maxLength={7089} {/* max numeric characters for qr code */}
                 placeholder="Type here to translate!"
                 onChangeText={text => setText(text)}
                 defaultValue={text}
