@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { Button, TextInput, ScrollView, StyleSheet } from 'react-native';
+import { Text, View, Button, TextInput, ScrollView, StyleSheet } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const App = () => {
+function GenerateScreen() {
     const [text, setText] = useState('');
     return (
         <ScrollView style={{paddingTop: 40, paddingLeft:10, paddingRight: 10}}>
@@ -27,6 +30,28 @@ const App = () => {
                 value={text}
             />}
         </ScrollView>
+    );
+}
+
+function SettingsScreen() {
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Settings!</Text>
+        </View>
+    );
+}
+
+
+const Tab = createBottomTabNavigator();
+
+const App = () => {
+    return (
+        <NavigationContainer>
+            <Tab.Navigator>
+                <Tab.Screen name="Generate" component={GenerateScreen} />
+                <Tab.Screen name="Settings" component={SettingsScreen} />
+            </Tab.Navigator>
+        </NavigationContainer>
     );
 }
 
