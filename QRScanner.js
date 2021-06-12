@@ -1,10 +1,11 @@
 'use strict';
 
-import React, {Component, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {
     StyleSheet,
     Text,
+    Button,
     TouchableOpacity,
     Linking,
     SafeAreaView,
@@ -13,6 +14,28 @@ import {
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
+
+function ScanResult(props){
+    const [supportedUrl, setSupportedUrl] = useState({urlChecked: '',supported: false});
+    const url = props.text;
+    useEffect(() =>{
+        async function check(){
+            console.log("chafa")
+            // Checking if the link is supported for links with custom URL scheme.
+            const supported = await Linking.canOpenURL(url);
+            console.log(supported)
+            setSupportedUrl({urlChecked: url,supported})
+        }
+        check();
+    }, [url]);
+
+    return (
+        <SafeAreaView><Text style={styles.resultText} selectable={true}>{supportedUrl.urlChecked}</Text>
+            <Button disabled={!supportedUrl.supported} onPress={() => { Linking.openURL(supportedUrl.urlChecked);} } title="Open"/>
+            <Button onPress={props.scanAgain} title="Scan Again"/>
+        </SafeAreaView>
+    )
+}
 
 export default function QRScanner() {
 
@@ -32,15 +55,14 @@ export default function QRScanner() {
     return (
         <ScrollView>
             {scanned ?
-                <SafeAreaView><Text style={styles.resultText} selectable={true}>{text}</Text></SafeAreaView>
+                <ScanResult text={text} scanAgain={()=> setScan({text:'',scanned: false})}></ScanResult>
                 : <QRCodeScanner
+                    reactivate={false}
                     onRead={onSuccess}
                     flashMode={RNCamera.Constants.FlashMode.off}
                     topContent={
                         <Text style={styles.centerText}>
-                            Go to{' '}
-                            <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text> on
-                            your computer and scan the QR code.
+                            <Text style={styles.textBold}>Scan the QR Code</Text>
                         </Text>
                     }
                     bottomContent={
