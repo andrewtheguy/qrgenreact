@@ -3,6 +3,7 @@ import { Text, View, Button, TextInput, ScrollView, StyleSheet } from 'react-nat
 import QRCode from 'react-native-qrcode-svg';
 import 'react-native-gesture-handler';
 import QRScanner from './QRScanner';
+import GetPicture from './GetPicture';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -44,6 +45,7 @@ const App = () => {
             <Tab.Navigator>
                 <Tab.Screen name="Generate" component={GenerateScreen} />
                 <Tab.Screen name="Scan" component={QRScanner} />
+                <Tab.Screen name="Get Pics" component={GetPicture} />
             </Tab.Navigator>
         </NavigationContainer>
     );

@@ -14,26 +14,8 @@ import {
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
+import ScanResult from './ScanResult';
 
-function ScanResult(props){
-    const [supportedUrl, setSupportedUrl] = useState({urlChecked: '',supported: false});
-    const url = props.text;
-    useEffect(() =>{
-        async function check(){
-            // Checking if the link is supported for links with custom URL scheme.
-            const supported = await Linking.canOpenURL(url);
-            setSupportedUrl({urlChecked: url,supported})
-        }
-        check();
-    }, [url]);
-
-    return (
-        <SafeAreaView><Text style={styles.resultText} selectable={true}>{supportedUrl.urlChecked}</Text>
-            <Button disabled={!supportedUrl.supported} onPress={() => { Linking.openURL(supportedUrl.urlChecked);} } title="Open"/>
-            <Button onPress={props.scanAgain} title="Scan Again"/>
-        </SafeAreaView>
-    )
-}
 
 export default function QRScanner() {
 
