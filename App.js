@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, Button, TextInput, ScrollView, StyleSheet } from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 import 'react-native-gesture-handler';
+import QRScanner from './QRScanner';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -33,13 +34,6 @@ function GenerateScreen() {
     );
 }
 
-function SettingsScreen() {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Settings!</Text>
-        </View>
-    );
-}
 
 
 const Tab = createBottomTabNavigator();
@@ -49,7 +43,7 @@ const App = () => {
         <NavigationContainer>
             <Tab.Navigator>
                 <Tab.Screen name="Generate" component={GenerateScreen} />
-                <Tab.Screen name="Settings" component={SettingsScreen} />
+                <Tab.Screen name="Scan" component={QRScanner} />
             </Tab.Navigator>
         </NavigationContainer>
     );
