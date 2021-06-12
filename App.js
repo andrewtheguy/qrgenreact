@@ -32,7 +32,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
     input: {
-        height: 100,
+        height: 50,
         //marginBottom: 10,
         borderColor: 'gray',
         borderWidth: 1
