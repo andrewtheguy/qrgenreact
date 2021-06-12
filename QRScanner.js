@@ -20,10 +20,8 @@ function ScanResult(props){
     const url = props.text;
     useEffect(() =>{
         async function check(){
-            console.log("chafa")
             // Checking if the link is supported for links with custom URL scheme.
             const supported = await Linking.canOpenURL(url);
-            console.log(supported)
             setSupportedUrl({urlChecked: url,supported})
         }
         check();
