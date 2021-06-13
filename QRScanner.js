@@ -17,10 +17,31 @@ import { RNCamera } from 'react-native-camera';
 import ScanResult from './ScanResult';
 
 
-export default function QRScanner() {
+export default function QRScanner({navigation}) {
 
     const [scan, setScan] = useState({text:'',scanned: false});
+    const [focused,setFocused]  = useState(true);
 
+
+    const [hasPermission, setHasPermission] = useState(null);
+
+    React.useEffect(() => {
+        const unsubscribe = navigation.addListener('blur', () => {
+            console.log('blur');
+            setFocused(false);
+        });
+
+        return unsubscribe;
+    }, [navigation]);
+
+    React.useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            console.log('focus');
+            setFocused(true);
+        });
+
+        return unsubscribe;
+    }, [navigation]);
 
     const onSuccess = e => {
         console.log(e.data);
@@ -34,7 +55,7 @@ export default function QRScanner() {
 
     return (
         <ScrollView>
-            {scanned ?
+            {scanned || !focused ?
                 <ScanResult text={text} scanAgain={()=> setScan({text:'',scanned: false})}></ScanResult>
                 : <QRCodeScanner
                     reactivate={false}
