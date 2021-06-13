@@ -25,10 +25,6 @@ target 'qrgenreact' do
   # you should disable the next line.
   use_flipper!()
 
-  # https://github.com/zoontek/react-native-permissions#setup
-  permissions_path = '../node_modules/react-native-permissions/ios'
-  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
-
   post_install do |installer|
     react_native_post_install(installer)
   end
