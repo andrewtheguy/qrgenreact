@@ -2,6 +2,13 @@ PODS:
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
+  - EXBarCodeScanner (10.1.2):
+    - UMBarCodeScannerInterface
+    - UMCore
+    - UMImageLoaderInterface
+    - UMPermissionsInterface
+    - ZXingObjC/OneD
+    - ZXingObjC/PDF417
   - EXConstants (10.1.3):
     - UMConstantsInterface
     - UMCore
@@ -271,14 +278,6 @@ PODS:
     - React-jsi (= 0.64.2)
     - React-perflogger (= 0.64.2)
   - React-jsinspector (0.64.2)
-  - react-native-camera (3.44.1):
-    - React-Core
-    - react-native-camera/RCT (= 3.44.1)
-    - react-native-camera/RN (= 3.44.1)
-  - react-native-camera/RCT (3.44.1):
-    - React-Core
-  - react-native-camera/RN (3.44.1):
-    - React-Core
   - react-native-cameraroll (4.0.4):
     - React-Core
   - react-native-safe-area-context (3.2.0):
@@ -412,9 +411,15 @@ PODS:
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
+  - ZXingObjC/Core (3.6.5)
+  - ZXingObjC/OneD (3.6.5):
+    - ZXingObjC/Core
+  - ZXingObjC/PDF417 (3.6.5):
+    - ZXingObjC/Core
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - EXBarCodeScanner (from `../node_modules/expo-barcode-scanner/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXImageLoader (from `../node_modules/expo-image-loader/ios`)
@@ -456,7 +461,6 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
-  - react-native-camera (from `../node_modules/react-native-camera`)
   - "react-native-cameraroll (from `../node_modules/@react-native-community/cameraroll`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -506,10 +510,13 @@ SPEC REPOS:
     - libevent
     - OpenSSL-Universal
     - YogaKit
+    - ZXingObjC
 
 EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  EXBarCodeScanner:
+    :path: "../node_modules/expo-barcode-scanner/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
   EXFileSystem:
@@ -550,8 +557,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
-  react-native-camera:
-    :path: "../node_modules/react-native-camera"
   react-native-cameraroll:
     :path: "../node_modules/@react-native-community/cameraroll"
   react-native-safe-area-context:
@@ -625,6 +630,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
+  EXBarCodeScanner: cd901ff9305ce8bfa4618474944c2e9be2bc252a
   EXConstants: c4dd28acc12039c999612507a5f935556f2c86ce
   EXFileSystem: dcf2273f49431e5037347c733a2dc5d08e0d0a9e
   EXImageLoader: da941c9399e01ec28f2d5b270bdd21f2c8ca596c
@@ -654,7 +660,6 @@ SPEC CHECKSUMS:
   React-jsi: 67747b9722f6dab2ffe15b011bcf6b3f2c3f1427
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
-  react-native-camera: 7bf59f2728ffb019fa25e60a225d2c57e1a8f0f6
   react-native-cameraroll: 88f4e62d9ecd0e1f253abe4f685474f2ea14bfa2
   react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
   React-perflogger: 25373e382fed75ce768a443822f07098a15ab737
@@ -690,6 +695,7 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: 203c11259d2699b5b3a4eda4adbc466f5cb5c561
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
+  ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
 PODFILE CHECKSUM: 585558f45a4faa1e11a05ad5b1f2829f3a2b301c
 

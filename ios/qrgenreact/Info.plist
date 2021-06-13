@@ -44,16 +44,11 @@
 		<string>armv7</string>
 	</array>
     <key>NSCameraUsageDescription</key>
-    <string>scan qr code</string>
-
-    <!-- Include this only if you are planning to use the camera roll -->
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Your message to user when the photo library is accessed for the first time</string>
-
-    <!-- Include this only if you are planning to use the microphone for video recording
+    <string>Allow $(PRODUCT_NAME) to use the camera</string>
     <key>NSMicrophoneUsageDescription</key>
-    <string>Your message to user when the microsphone is accessed for the first time</string> -->
-
+    <string>Allow $(PRODUCT_NAME) to use the microphone</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your message to user when the photo library is accessed for the first time</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
