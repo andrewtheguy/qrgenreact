@@ -12,7 +12,6 @@ import {
     SafeAreaView,
     ScrollView, TextInput, Image, TouchableHighlight, ListView, FlatList, Alert, View,
 } from 'react-native';
-import QRCode from 'react-native-qrcode-svg';
 
 export default function GetPicture() {
 
