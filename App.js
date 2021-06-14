@@ -18,7 +18,7 @@ function GenerateScreen() {
         if(!svg){
             return;
         }
-        console.log(svg);
+        //console.log(svg);
         //return;
         svg.toDataURL((data) => {
             RNFS.writeFile(RNFS.CachesDirectoryPath+"/some-name.png", data, 'base64')
