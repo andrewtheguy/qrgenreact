@@ -18,14 +18,21 @@ function GenerateScreen() {
         if(!svg){
             return;
         }
-        //console.log(svg);
-        //return;
+        const path = RNFS.CachesDirectoryPath+"/some-name.png";
         svg.toDataURL((data) => {
-            RNFS.writeFile(RNFS.CachesDirectoryPath+"/some-name.png", data, 'base64')
+            RNFS.writeFile(path, data, 'base64')
                 .then((success) => {
-                    return CameraRoll.save(RNFS.CachesDirectoryPath+"/some-name.png", 'photo')
+                    return CameraRoll.save(path, 'photo')
                 })
                 .then(() => {
+                    RNFS.unlink(path)
+                        .then(() => {
+                            console.log('FILE DELETED');
+                        })
+                        // `unlink` will throw an error, if the item to unlink does not exist
+                        .catch((err) => {
+                            console.error(err.message);
+                        });
                     Alert.alert("save successful");
                 })
         });
